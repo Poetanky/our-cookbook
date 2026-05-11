@@ -103,6 +103,28 @@ const initialRecipes = [
     notes: "Lime-cumin marinade, pan sear 3 min each side. Don't overcook the shrimp.",
     favorite: false,
   },
+  {
+  id: 10,
+  name: "Savory Breakfast Burritos",
+  category: "Breakfast",
+  protein: "Turkey",
+  cookTime: "30 min",
+  proteinGrams: "32g",
+  ingredients: [
+    "Eggs (8 large)",
+    "Turkey breakfast sausage (½ lb)",
+    "Black beans canned (1 can, drained)",
+    "Bell peppers (2, diced)",
+    "Yellow onion (1, diced)",
+    "Shredded cheddar or Monterey Jack",
+    "Large flour tortillas (6–8)",
+    "Olive oil",
+    "Cumin, garlic powder, salt & pepper",
+    "Salsa or hot sauce for serving",
+  ],
+  notes: "Make a full batch Sunday. Wrap individually in foil and refrigerate up to 5 days — microwave 90 seconds straight from the fridge. Freeze extras up to 1 month. Brown the sausage first, cook veggies in the same pan for flavor. Don't overfill or they won't wrap tight.",
+  favorite: false,
+},
 ];
 
 const categoryColors = {
