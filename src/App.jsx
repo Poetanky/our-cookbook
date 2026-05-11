@@ -354,20 +354,20 @@ export default function Cookbook() {
   const [favOnly, setFavOnly] = useState(false);
 
   useEffect(() => {
-    (async () => {
-      try {
-        const result = await window.storage.get("cookbook-recipes");
-        if (result?.value) {
-          setRecipes(JSON.parse(result.value));
-        } else {
-          setRecipes(initialRecipes);
-        }
-      } catch {
+  (async () => {
+    try {
+      const result = await window.storage.get("cookbook-recipes");
+      if (result?.value) {
+        setRecipes(JSON.parse(result.value));
+      } else {
         setRecipes(initialRecipes);
       }
-      setLoaded(true);
-    })();
-  }, []);
+    } catch {
+      setRecipes(initialRecipes);
+    }
+    setLoaded(true);
+  })();
+}, []);
 
   useEffect(() => {
     if (!loaded) return;
