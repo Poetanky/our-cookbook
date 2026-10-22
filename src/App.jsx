@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const CATEGORIES = ["All", "Breakfast", "Lunch", "Dinner"];
+const CATEGORIES = ["All", "Breakfast", "Lunch", "Dinner", "Snack"];
 const PROTEINS = ["Chicken", "Beef", "Fish", "Shrimp", "Turkey", "Other"];
 
 const initialRecipes = [
@@ -220,12 +220,252 @@ const initialRecipes = [
     notes: "Brown the sausage first so the veggies pick up the flavor from the same pan. Don't overfill or they won't wrap tight.",
     favorite: false,
   },
+  {
+    id: 11,
+    name: "Bagel Sandwich",
+    category: "Breakfast",
+    protein: "Other",
+    cookTime: "10 min",
+    proteinGrams: "24g",
+    ingredients: ["Everything bagel", "Egg", "Breakfast sausage patty", "Slice of cheese (cheddar or American)"],
+    instructions: [
+      "Split and toast the bagel.",
+      "Griddle the sausage patty through, 3–4 min per side.",
+      "Fry or scramble the egg to fit the bagel.",
+      "Lay the cheese over the hot patty for 30 sec to melt.",
+      "Stack: bagel, egg, patty + cheese, bagel top.",
+    ],
+    notes: "Decker's fixed breakfast, every morning.",
+    favorite: false,
+  },
+  {
+    id: 12,
+    name: "Ninja Creami Protein Ice Cream",
+    category: "Snack",
+    protein: "Other",
+    cookTime: "5 min prep + 24 hr freeze",
+    proteinGrams: "17g per half",
+    ingredients: ["Banana (1)", "Protein powder (1 scoop)", "Lactose-free milk (1 cup)"],
+    instructions: [
+      "Blend banana, protein powder and milk until smooth.",
+      "Pour into a Creami pint, freeze flat at least 24 hrs.",
+      "Run the Protein (or Lite Ice Cream) program; re-spin if crumbly.",
+      "Split into two bowls.",
+    ],
+    notes: "Shared nightly, about half each. Batch a week's worth of pints on Sunday so one is always ready to spin.",
+    favorite: false,
+  },
+  {
+    id: 13,
+    name: "Chicken Fajita Bowls",
+    category: "Dinner",
+    protein: "Chicken",
+    cookTime: "25 min",
+    proteinGrams: "35g",
+    ingredients: [
+      "Boneless, skinless chicken breast (1½ lb), sliced into strips",
+      "Olive oil (2 tbsp, divided)",
+      "Chili powder (2 tsp), ground cumin (1 tsp), smoked paprika (1 tsp), garlic powder (½ tsp), onion powder (½ tsp), salt & pepper",
+      "Limes (2), juiced, divided",
+      "Red bell pepper (1) + green bell pepper (1), sliced",
+      "Yellow onion (1), sliced",
+      "Rice (1½ cups, cooked)",
+      "Black beans (1 can, 15 oz, drained and rinsed)",
+      "Avocado (1), sliced",
+      "Plain Greek yogurt (¼ cup), to top",
+      "Fresh cilantro, chopped, to top",
+    ],
+    instructions: [
+      "Toss chicken strips with 1 tbsp olive oil, fajita seasoning and juice of 1 lime; marinate 15 min.",
+      "Heat remaining oil in a large skillet over high heat; sauté peppers and onion 5–6 min until charred-tender, remove.",
+      "Cook chicken in the same skillet 6–8 min until browned and cooked through (165°F); return peppers and onion to the pan, toss 1 min.",
+      "Warm black beans in a small pot.",
+      "Cook rice per package directions.",
+      "Build bowls: rice, beans, chicken and peppers, avocado, a dollop of yogurt, cilantro, and a squeeze of the remaining lime.",
+    ],
+    notes: "Decker: ~9 oz chicken + full rice + full beans + full avocado. Rachael: ~6 oz chicken + half rice, double peppers & onions, light beans, half avocado.",
+    favorite: false,
+  },
+  {
+    id: 14,
+    name: "Miso-Glazed Salmon with Soba Noodles & Bok Choy",
+    category: "Dinner",
+    protein: "Fish",
+    cookTime: "25 min",
+    proteinGrams: "38g",
+    ingredients: [
+      "Salmon fillets (2, about 7 oz + 5 oz)",
+      "White or yellow miso paste (3 tbsp)",
+      "Mirin (2 tbsp)",
+      "Soy sauce (1 tbsp)",
+      "Honey (1 tbsp)",
+      "Rice vinegar (1 tsp)",
+      "Soba noodles (6 oz, dry)",
+      "Baby bok choy (4), halved lengthwise",
+      "Sesame oil (1 tbsp)",
+      "Garlic (2 cloves, minced)",
+      "Sesame seeds & sliced scallion, to top",
+    ],
+    instructions: [
+      "Whisk miso, mirin, soy sauce, honey and rice vinegar for the glaze.",
+      "Pat salmon dry; brush with half the glaze. Bake at 425°F for 8–10 min, brushing with remaining glaze halfway, until just cooked through.",
+      "Cook soba noodles per package directions; drain and rinse under cool water.",
+      "Heat sesame oil in a skillet over medium-high; sauté bok choy with garlic 3–4 min until wilted and tender.",
+      "Toss noodles with a drizzle of sesame oil if needed.",
+      "Plate salmon over noodles with bok choy, top with sesame seeds and scallion.",
+    ],
+    notes: "Decker: 7 oz salmon + full soba + bok choy. Rachael: 5 oz salmon + light soba, double bok choy.",
+    favorite: false,
+  },
+  {
+    id: 15,
+    name: "Jerk Chicken Thighs with Coconut Rice & Peas",
+    category: "Dinner",
+    protein: "Chicken",
+    cookTime: "35 min",
+    proteinGrams: "40g",
+    ingredients: [
+      "Boneless, skinless chicken thighs (1½ lb)",
+      "Jerk seasoning (2 tbsp)",
+      "Lime juice (1 tbsp) + olive oil (1 tbsp), for marinade",
+      "Rice (1 cup) + canned coconut milk (¾ cup) + water (¾ cup)",
+      "Pigeon peas or black-eyed peas (1 can, 15 oz, drained)",
+      "Green beans (½ lb, trimmed)",
+      "Sliced scallion, to top",
+    ],
+    instructions: [
+      "Toss chicken thighs with jerk seasoning, lime juice and olive oil; marinate at least 20 min.",
+      "Heat a grill pan or skillet over medium-high; cook chicken 6–7 min per side until charred and cooked through (165°F). Rest, then slice.",
+      "Combine rice, coconut milk, water and a pinch of salt in a pot; bring to a boil, reduce heat, cover, simmer 15–18 min until rice is tender.",
+      "Stir in the peas, warm through 2–3 min.",
+      "Steam or sauté green beans 5–6 min until tender-crisp.",
+      "Plate chicken over coconut rice and peas with green beans on the side, top with scallion.",
+    ],
+    notes: "Decker: ~9 oz chicken + full coconut rice & peas. Rachael: ~6 oz chicken + half rice & peas, extra green beans.",
+    favorite: false,
+  },
+  {
+    id: 16,
+    name: "Beef & Broccoli Stir-Fry",
+    category: "Dinner",
+    protein: "Beef",
+    cookTime: "25 min",
+    proteinGrams: "42g",
+    ingredients: [
+      "Flank or sirloin steak (1½ lb), thinly sliced against the grain",
+      "Cornstarch (1 tbsp) + salt & pepper, for coating",
+      "Soy sauce (⅓ cup) + oyster sauce (2 tbsp) + brown sugar (1 tbsp) + sesame oil (1 tsp) + cornstarch (1 tsp) dissolved in water (2 tbsp), for sauce",
+      "Neutral oil (2 tbsp, divided)",
+      "Broccoli florets (4 cups)",
+      "Garlic (3 cloves, minced) + fresh ginger (1 tbsp, minced)",
+      "Rice (1½ cups, cooked)",
+    ],
+    instructions: [
+      "Toss beef with cornstarch, salt and pepper.",
+      "Whisk soy sauce, oyster sauce, brown sugar, sesame oil and cornstarch slurry for the sauce.",
+      "Heat 1 tbsp oil in a wok or large skillet over high heat; sear beef in batches 2–3 min until browned, remove.",
+      "Add remaining oil, stir-fry broccoli 4–5 min until crisp-tender; add garlic and ginger, cook 30 sec.",
+      "Return beef to the pan, pour in the sauce, toss 1–2 min until glossy and thickened.",
+      "Cook rice per package directions. Serve stir-fry over rice.",
+    ],
+    notes: "Decker: ~9 oz beef over full rice. Rachael: ~6 oz beef over half rice, double broccoli.",
+    favorite: false,
+  },
+  {
+    id: 17,
+    name: "Shrimp Scampi with Linguine & Zucchini Noodles",
+    category: "Dinner",
+    protein: "Shrimp",
+    cookTime: "25 min",
+    proteinGrams: "36g",
+    ingredients: [
+      "Shrimp (1½ lb), peeled and deveined",
+      "Butter (4 tbsp) + olive oil (3 tbsp), divided",
+      "Garlic (5 cloves, minced)",
+      "Red pepper flakes (½ tsp)",
+      "Dry white wine (½ cup, or chicken broth)",
+      "Lemon juice (2 tbsp) + zest of 1 lemon",
+      "Linguine (8 oz)",
+      "Zucchini (2 medium), spiralized into noodles",
+      "Fresh parsley, chopped, to top",
+      "Grated Parmesan, to top",
+    ],
+    instructions: [
+      "Cook linguine per package directions, reserving ½ cup pasta water; drain.",
+      "Pat shrimp dry, season with salt and pepper.",
+      "Heat 2 tbsp olive oil + 2 tbsp butter in a large skillet over medium-high; cook shrimp 2–3 min per side until pink, remove.",
+      "Add remaining butter and oil, garlic and red pepper flakes to the pan, cook 30 sec; pour in wine, simmer 2 min. Stir in lemon juice and zest.",
+      "In a separate pan, sauté zucchini noodles in a little olive oil 2–3 min until just tender — don't overcook.",
+      "Return shrimp to the sauce; toss linguine through it, adding splashes of pasta water as needed.",
+      "Plate one portion over linguine and the other over zucchini noodles, both topped with shrimp, parsley and Parmesan.",
+    ],
+    notes: "Decker: ~9 oz shrimp over full linguine. Rachael: ~6 oz shrimp over zucchini noodles in place of pasta, light Parmesan.",
+    favorite: false,
+  },
+  {
+    id: 18,
+    name: "Turkey Taco Skillet with Black Beans & Corn",
+    category: "Dinner",
+    protein: "Turkey",
+    cookTime: "30 min",
+    proteinGrams: "34g",
+    ingredients: [
+      "Lean ground turkey (1½ lb)",
+      "Olive oil (1 tbsp)",
+      "Yellow onion (½, diced)",
+      "Garlic (2 cloves, minced)",
+      "Taco seasoning (2 tbsp)",
+      "Black beans (1 can, 15 oz, drained and rinsed)",
+      "Corn kernels (1 cup, fresh, frozen or canned)",
+      "Diced tomatoes with green chiles (1 can, 10 oz)",
+      "Rice (1 cup, cooked)",
+      "Shredded cheddar (¼ cup) + chopped cilantro + lime wedges, to top",
+    ],
+    instructions: [
+      "Heat olive oil in a large skillet over medium; sauté onion 4 min until soft. Add garlic, cook 30 sec.",
+      "Add ground turkey, break up, cook 6–7 min until browned and cooked through.",
+      "Stir in taco seasoning, black beans, corn and diced tomatoes with chiles; simmer 8–10 min until thickened.",
+      "Cook rice per package directions.",
+      "Serve turkey mixture over rice, top with cheddar, cilantro and lime.",
+    ],
+    notes: "Decker: ~2 cups turkey mixture over full rice, full cheese. Rachael: ~1¼ cups turkey mixture over light rice, light cheese, extra lime & cilantro.",
+    favorite: false,
+  },
+  {
+    id: 19,
+    name: "Buffalo Chicken & Rice Bowls with Ranch Drizzle",
+    category: "Dinner",
+    protein: "Chicken",
+    cookTime: "30 min",
+    proteinGrams: "40g",
+    ingredients: [
+      "Boneless, skinless chicken breast (1½ lb), cut into bite-size pieces",
+      "Olive oil (1 tbsp)",
+      "Buffalo sauce (⅓ cup, divided)",
+      "Rice (1½ cups, cooked)",
+      "Broccoli florets (4 cups), steamed or roasted",
+      "Plain Greek yogurt (½ cup) + dried dill (1 tsp) + garlic powder (½ tsp) + onion powder (½ tsp) + milk (1–2 tbsp), for ranch",
+      "Celery (2 stalks, diced), to top",
+      "Shredded cheddar (¼ cup, optional), to top",
+    ],
+    instructions: [
+      "Season chicken with salt and pepper. Heat olive oil in a skillet over medium-high; cook chicken 6–8 min until browned and cooked through (165°F).",
+      "Toss cooked chicken with half the buffalo sauce; reserve the rest for serving.",
+      "Steam or roast broccoli until tender-crisp.",
+      "Whisk Greek yogurt, dill, garlic powder, onion powder and milk for the yogurt ranch.",
+      "Cook rice per package directions.",
+      "Build bowls: rice, chicken, broccoli, a drizzle of yogurt ranch and the remaining buffalo sauce, top with celery and cheddar.",
+    ],
+    notes: "Decker: ~9 oz chicken + full rice + full ranch + full buffalo. Rachael: ~6 oz chicken + half rice, double broccoli, light ranch.",
+    favorite: false,
+  },
 ];
 
 const categoryColors = {
   Breakfast: { bg: "#fbbf2415", border: "#fbbf2440", text: "#fbbf24" },
   Lunch: { bg: "#34d39915", border: "#34d39940", text: "#34d399" },
   Dinner: { bg: "#f9731615", border: "#f9731640", text: "#f97316" },
+  Snack: { bg: "#c084fc15", border: "#c084fc40", text: "#c084fc" },
 };
 
 const proteinEmoji = {
@@ -336,6 +576,17 @@ function RecipeModal({ recipe, onClose, onToggleFavorite }) {
           ))}
         </div>
 
+        {recipe.instructions && recipe.instructions.length > 0 && (
+          <div style={{ marginBottom: 20 }}>
+            <div style={{ fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", color: "#555", marginBottom: 10 }}>Instructions</div>
+            <ol style={{ margin: 0, paddingLeft: 20, display: "flex", flexDirection: "column", gap: 8 }}>
+              {recipe.instructions.map((step, i) => (
+                <li key={i} style={{ fontSize: 14, color: "#ccc", lineHeight: 1.55 }}>{step}</li>
+              ))}
+            </ol>
+          </div>
+        )}
+
         {recipe.notes && (
           <div style={{ background: "#111", border: "1px solid #222", borderRadius: 8, padding: "12px 14px" }}>
             <div style={{ fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", color: "#555", marginBottom: 6 }}>Notes</div>
@@ -402,7 +653,7 @@ function AddRecipeModal({ onClose, onAdd }) {
             <div>
               <label style={labelStyle}>Category</label>
               <select style={inputStyle} value={form.category} onChange={e => set("category", e.target.value)}>
-                {["Breakfast", "Lunch", "Dinner"].map(c => <option key={c}>{c}</option>)}
+                {["Breakfast", "Lunch", "Dinner", "Snack"].map(c => <option key={c}>{c}</option>)}
               </select>
             </div>
             <div>
