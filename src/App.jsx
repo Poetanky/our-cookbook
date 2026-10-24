@@ -492,6 +492,7 @@ const initialRecipes = [
     ],
     notes: "Decker: ~9 oz chicken & sauce over full rice (1 cup). Rachael: ~6 oz chicken over half rice, double spinach, lighter ladle of sauce.",
     favorite: false,
+    weekOf: "2026-10-26",
   },
   {
     id: 21,
@@ -521,6 +522,7 @@ const initialRecipes = [
     ],
     notes: "Decker: 2 fillets (~12 oz) + full rice + full asparagus. Rachael: 1 fillet (~6 oz) + half rice, double asparagus.",
     favorite: false,
+    weekOf: "2026-10-26",
   },
   {
     id: 22,
@@ -549,6 +551,7 @@ const initialRecipes = [
     ],
     notes: "Decker: ~9 oz beef + full rice + full hummus (¼ cup). Rachael: ~6 oz beef over half rice, double salad, light hummus (2 tbsp).",
     favorite: false,
+    weekOf: "2026-10-26",
   },
   {
     id: 23,
@@ -579,6 +582,7 @@ const initialRecipes = [
     ],
     notes: "Decker: ~9 oz shrimp over full rice + full peanuts. Rachael: ~6 oz shrimp over half rice, double snap peas, light peanuts (1 tbsp).",
     favorite: false,
+    weekOf: "2026-10-26",
   },
   {
     id: 24,
@@ -605,6 +609,7 @@ const initialRecipes = [
     ],
     notes: "Decker: ~5 meatballs + full spaghetti + full sauce. Rachael: ~3 meatballs + light spaghetti, extra sauce & basil.",
     favorite: false,
+    weekOf: "2026-10-26",
   },
   {
     id: 25,
@@ -633,6 +638,7 @@ const initialRecipes = [
     ],
     notes: "Decker: ~9 oz chicken + full sweet potatoes + full corn. Rachael: ~6 oz chicken + light sweet potatoes (half portion), double slaw, light BBQ sauce.",
     favorite: false,
+    weekOf: "2026-10-26",
   },
   {
     id: 26,
@@ -666,6 +672,7 @@ const initialRecipes = [
     ],
     notes: "Decker: full stew (~2 cups) + full couscous + a drizzle of olive oil or crumbled feta. Rachael: lighter stew (~1½ cups) + half couscous, extra spinach stirred in, dollop of yogurt.",
     favorite: false,
+    weekOf: "2026-10-26",
   },
 ];
 
@@ -973,6 +980,18 @@ export default function Cookbook() {
     return matchCat && matchSearch && matchFav;
   });
 
+  const weekDates = recipes.map(r => r.weekOf).filter(Boolean).sort();
+  const latestWeek = weekDates.length ? weekDates[weekDates.length - 1] : null;
+  const thisWeekRecipes = latestWeek ? recipes.filter(r => r.weekOf === latestWeek) : [];
+
+  const formatWeekRange = (weekOf) => {
+    const start = new Date(weekOf + "T00:00:00");
+    const end = new Date(start);
+    end.setDate(end.getDate() + 6);
+    const opts = { month: "short", day: "numeric" };
+    return `${start.toLocaleDateString("en-US", opts)} – ${end.toLocaleDateString("en-US", opts)}`;
+  };
+
   if (!loaded) return <div style={{ background: "#0f0f0f", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", color: "#555", fontFamily: "Georgia, serif" }}>Loading cookbook…</div>;
 
   return (
@@ -989,6 +1008,35 @@ export default function Cookbook() {
           {recipes.length} recipes · {recipes.filter(r => r.favorite).length} favorites
         </p>
       </div>
+
+      {/* This Week */}
+      {thisWeekRecipes.length > 0 && (
+        <div style={{ maxWidth: 640, margin: "28px auto 0", padding: "0 20px" }}>
+          <div style={{
+            background: "#161616", border: "1px solid #f9731640", borderRadius: 14,
+            padding: "20px 20px 18px",
+          }}>
+            <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", flexWrap: "wrap", gap: 6, marginBottom: 14 }}>
+              <h2 style={{ margin: 0, fontSize: 20, fontWeight: 400, color: "#f0ece4" }}>
+                This Week's Dinners
+              </h2>
+              <span style={{ fontSize: 12, color: "#f97316", letterSpacing: "0.05em" }}>
+                {formatWeekRange(latestWeek)}
+              </span>
+            </div>
+            <div style={{
+              display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 10,
+            }}>
+              {thisWeekRecipes.map(recipe => (
+                <RecipeCard key={recipe.id} recipe={recipe} onClick={setSelectedRecipe} onToggleFavorite={toggleFavorite} />
+              ))}
+            </div>
+            <p style={{ margin: "14px 0 0", color: "#555", fontSize: 12, fontStyle: "italic", textAlign: "center" }}>
+              Pick one of these for tonight, or browse the full cookbook below.
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* Controls */}
       <div style={{ maxWidth: 640, margin: "24px auto 0", padding: "0 20px", display: "flex", flexDirection: "column", gap: 14 }}>
@@ -1037,8 +1085,15 @@ export default function Cookbook() {
       </div>
 
       {/* Grid */}
+      {thisWeekRecipes.length > 0 && (
+        <div style={{ maxWidth: 640, margin: "20px auto 0", padding: "0 20px" }}>
+          <h2 style={{ margin: 0, fontSize: 13, textTransform: "uppercase", letterSpacing: "0.1em", color: "#666", fontWeight: 400 }}>
+            All Recipes
+          </h2>
+        </div>
+      )}
       <div style={{
-        maxWidth: 640, margin: "20px auto 0", padding: "0 20px",
+        maxWidth: 640, margin: "8px auto 0", padding: "0 20px",
         display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 12,
       }}>
         {filtered.map(recipe => (
