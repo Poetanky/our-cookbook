@@ -1086,6 +1086,32 @@ const initialRecipes = [
     favorite: false,
     weekOf: "2026-11-23",
   },
+  {
+    id: 41,
+    name: "Baked Cod with Lemon-Herb Butter, Roasted Potatoes & Green Beans",
+    category: "Dinner",
+    protein: "Fish",
+    cookTime: "35 min",
+    proteinGrams: "34g",
+    ingredients: [
+      "Cod fillets (4, about 1½ lb total)",
+      "Butter (3 tbsp), melted + lemon juice (1 tbsp) + lemon zest (1 tsp) + garlic (2 cloves, minced) + fresh parsley (1 tbsp, chopped) + salt & pepper, for lemon-herb butter",
+      "Baby potatoes (1½ lb), halved + olive oil (2 tbsp) + salt & pepper",
+      "Green beans (1 lb), trimmed + olive oil (1 tbsp) + salt & pepper",
+      "Lemon (1), cut into wedges",
+    ],
+    instructions: [
+      "Preheat oven to 425°F. Toss potatoes with 2 tbsp olive oil, salt and pepper; spread on a sheet pan and roast 15 min.",
+      "Toss green beans with 1 tbsp olive oil, salt and pepper; add to the sheet pan alongside the potatoes, roast 15 min more, tossing once.",
+      "Meanwhile, whisk melted butter, lemon juice, zest, garlic, parsley, salt and pepper for the lemon-herb butter.",
+      "Pat cod dry, season with salt and pepper, place on a separate lined baking sheet, and brush with half the lemon-herb butter.",
+      "Bake cod at 425°F for 10–12 min until opaque and flakes easily (internal 130–135°F); brush with remaining butter before serving.",
+      "Serve cod with the roasted potatoes, green beans and lemon wedges.",
+    ],
+    notes: "Decker: 2 fillets (~12 oz) + full potatoes (1½ cups) + full green beans. Rachael: 1 fillet (~6 oz) + ¾ cup potatoes, double green beans.",
+    favorite: false,
+    weekOf: "2026-11-30",
+  },
 ];
 
 const categoryColors = {
